@@ -8,17 +8,30 @@ alert('Por favor, ingresa un nombre');
     } else {
         listaDeAmigos.push(nombreAmigo);
         document.querySelector('#amigo').value = '';
-        //mostrarListaAmigo();
+        console.log(listaDeAmigos);
+        mostarListaAmigos();
     }
-
 }
-//function agregarAmigo() {
-    //let nombreAmigo = document.getElementById("amigo").value;
+
+function mostarListaAmigos() {
+    let listaAmigos = document.querySelector("#listaAmigos");
+    listaAmigos.innerHTML = "";
   
-    //if (nombreAmigo.trim() === "") {
-     // alert("Por favor, inserte un nombre");
-   // } else {
-    //  amigos.push(nombreAmigo);
-    //  document.querySelector("#amigo").value = "";
-    //  mostrarListaAmigo();
-   // }
+    for (let index = 0; index < listaDeAmigos.length; index++) {
+     const element = listaDeAmigos[index];
+  
+      let listaHTML = document.createElement("li");
+      listaHTML.textContent = element;
+      listaAmigos.appendChild(listaHTML);
+    }
+  }
+  function sortearAmigo() {
+    let cantidadAmigos = listaDeAmigos.length;
+    if (cantidadAmigos === 0) {
+      alert("Por favor, inserte un nombre antes de sortear");
+    } else {
+      let indiceAmigo = Math.floor(Math.random() * cantidadAmigos);
+      let resultadoHTML = document.querySelector("#resultado");
+      resultadoHTML.innerHTML = listaDeAmigos[indiceAmigo];
+    }
+  }
